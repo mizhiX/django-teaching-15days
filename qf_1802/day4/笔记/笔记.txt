@@ -1,0 +1,95 @@
+
+1. rest
+
+资源, 统一接口， 状态转移
+
+127.0.0.1:8080/app/student/：获取所有的学生 GET
+
+127.0.0.1:8080/app/student/: 创建的学生 POST
+
+
+127.0.0.1:8080/app/student/1/: 获取学生中id为1的那一个学生 GET
+
+127.0.0.1:8080/app/student/1/: PUT、PATCH
+
+127.0.0.1:8080/app/student/1/: DELETE
+
+
+127.0.0.1:8080/app/grade/：获取所有的班级 GET
+
+2. http请求方式
+
+GET：用于获取
+POST： 用于创建
+PUT：用于修改， 全部属性都会修改
+PATCH: 用于修改，部分属性进行修改
+DELETE: 删除
+
+3. 旧接口
+
+127.0.0.1:8080/app/student/?id=1
+
+127.0.0.1:8080/app/student/1/
+
+4. 安装
+
+pip install djangorestframework
+
+5. 删除
+
+请求url：http://127.0.0.1:8081/app/api/student/2/
+
+def destroy(self, request, *args, **kwargs):
+    instance = self.get_object()
+    self.perform_destroy(instance)
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
+def perform_destroy(self, instance):
+    instance.delete()
+
+
+instance = self.get_object() 等价于 stu=Student.objects.get(id=2)
+instance.delete()  等价于 stu.delete()
+
+6. to_representation中instance是当前循环的学生的对象
+
+7. rest的配置，分页配置，还有权限设置
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE':2,
+    'DEFAULT_AUTHENTICATION_CLASSES':()
+}
+
+7. ajax请求方式
+
+$.get(url, function(msg){
+	
+
+})
+
+$.post(url, function(msg){
+	
+	
+})
+
+以上方式:url表示请求的地址，function(msg)代表，请求成功后的回调函数，msg是api返回的结果
+
+$.ajax({
+	url:'', # 请求的url地址，
+	type:'', # GET POST PATCH PUT DELETE
+	data：{'name':name,'sex':sex}，  # 代表请求的参数
+	dataType:'json',
+	headers:{'X-CSRFToken': csrf}  # 代表传递的csrf值
+	success:function(msg){
+		成功执行回调函数
+	},
+	error:function(msg){
+		失败执行回调函数
+	}
+
+});
+
+
+
+

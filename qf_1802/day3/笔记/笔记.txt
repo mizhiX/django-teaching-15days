@@ -1,0 +1,129 @@
+1. 定义闭包
+
+def is_login(func):
+	
+	def check_login(request):
+
+		# 如果登录，返回函数func
+		ticket = request.COOKIES.get('ticket')
+
+        if not ticket:
+        	# 没有登录，跳转到登录页面
+            return HttpResponseRedirect(reverse('user:login'))
+
+        user = Users.objects.filter(ticket=ticket)
+        if not user:
+        	# 没有登录，跳转到登录页面
+            return HttpResponseRedirect(reverse('user:login'))
+
+		return func()
+	
+	return check_login
+
+
+2. 模板
+
+在基础base.html中挖坑 
+
+	{% block xxxx %}  {% endblock %}
+
+在index.html页面中，需要先继承{% extends 'base.html' %}
+	{% block xxxx %}  {% endblock %}
+
+加载上一次填坑的内容
+	{% block.super %}
+
+
+3. F/Q
+
+last() 最后一个
+first() 第一个
+
+一对多：
+	多找一： 
+		student.g.g_name
+		student.g.id
+
+	一找多：
+		grade.student_set.all()
+
+一对一：
+	student.g.g_name
+	grade.student.all()
+
+
+F()：用于做计算
+students.filter(s_yuwen__gt= F('s_shuxue') + 10)
+
+Q():用于过滤信息。|或者 &并且 ~取反
+
+ # 查询python班语文大于等于80或者数学小于等于80的学生
+grade = Grade.objects.filter(g_name='python').first()
+students = grade.student_set.all()
+
+stu = students.filter(Q(s_yuwen__gte=80) | Q(s_shuxue__lte=80))
+
+# 查询python班语文小于80并且数学小于等于80的学生
+stu = students.filter(~Q(s_yuwen__gte=80) & Q(s_shuxue__lte=80))
+
+
+4. 模板
+
+if
+
+for
+
+ifequal：判断是否相等
+
+forloop.counter :循环，从1开始
+forloop.revcounter：倒循环，倒1结束
+
+forloop.counter0 :循环，从0开始
+forloop.revcounter0：倒循环，倒0结束
+
+
+练习题：
+
+创建班级的模型
+class Grade(models.Model):
+    g_name = models.CharField(max_length=20)
+    g_create_time = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'grade'
+
+创建学生的模型：
+    class Student(models.Model):
+        stu_name = models.CharField(max_length=6, unique=True)
+        stu_sex = models.BooleanField(default=0)
+        stu_birth = models.DateField()
+        stu_delete = models.BooleanField(default=0)
+        stu_create_time = models.DateField(auto_now_add=True)
+        stu_operate_time = models.DateField(auto_now=True)
+        stu_tel = models.CharField(max_length=11)
+        stu_yuwen = models.DecimalField(max_digits=3, decimal_places=1, default=0)
+        stu_shuxue = models.DecimalField(max_digits=3, decimal_places=1, default=0)
+        g = models.ForeignKey(Grade)
+
+        class Meta:
+            db_table = 'stu'
+
+创建学生拓展的模型：		
+    class StuInfo(models.Model):
+
+        stu_addr = models.CharField(max_length=30)
+        stu_age = models.IntegerField()
+        stu = models.OneToOneField(Student)
+
+        class Meta:
+            db_table = 'stu_info'
+
+
+1. 通过某个学生拓展表去获取学生信息
+2. 通过学生表获取个人拓展表的信息
+3. 获取python班下的所有学生的信息和拓展表的信息
+4. 获取python班下语文成绩大于80分的女学生
+5. 获取python班下语文成绩超过数学成绩10分的男学生
+6. 获取出生在80后的男学生，查看他们的班级
+
+
