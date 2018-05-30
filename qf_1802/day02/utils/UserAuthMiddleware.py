@@ -5,7 +5,6 @@ from django.core.urlresolvers import reverse
 
 from user.models import Users
 
-
 class UserAuthMiddle(MiddlewareMixin):
 
     def process_request(self, request):
@@ -24,7 +23,7 @@ class UserAuthMiddle(MiddlewareMixin):
         if not ticket:
             return HttpResponseRedirect(reverse('user:login'))
 
-        user = Users.objects.filter(ticket=ticket).first()
+        user = Users.objects.filter(ticket=ticket)
         if not user:
             return HttpResponseRedirect(reverse('user:login'))
 

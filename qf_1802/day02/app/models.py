@@ -15,8 +15,6 @@ class Student(models.Model):
     s_operate_time = models.DateTimeField(auto_now=True)
     s_img = models.ImageField(upload_to='upload', null=True)
     g = models.ForeignKey(Grade)
-    s_yuwen = models.IntegerField(null=True)
-    s_shuxue = models.IntegerField(null=True)
 
     class Meta:
         db_table='student'

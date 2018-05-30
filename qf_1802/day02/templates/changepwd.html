@@ -1,54 +1,13 @@
-﻿
-{% extends 'base_main.html' %}
-
-{% block title %}
-	修改密码
-{% endblock %}
-
-{% block extCSS %}
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>修改密码</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
-{% endblock %}
-
-{% block extJS %}
-{% block.super %}
-
-<script type="text/javascript">
-function checkpwd1(){
-var user = document.getElementById('pwd1').value.trim();
- if (user.length >= 6 && user.length <= 12) {
-  $("#pwd1").parent().find(".imga").show();
-  $("#pwd1").parent().find(".imgb").hide();
- }else{
-  $("#pwd1").parent().find(".imgb").show();
-  $("#pwd1").parent().find(".imga").hide();
- };
-}
-function checkpwd2(){
-var user = document.getElementById('pwd2').value.trim();
- if (user.length >= 6 && user.length <= 12) {
-  $("#pwd2").parent().find(".imga").show();
-  $("#pwd2").parent().find(".imgb").hide();
- }else{
-  $("#pwd2").parent().find(".imgb").show();
-  $("#pwd2").parent().find(".imga").hide();
- };
-}
-function checkpwd3(){
-var user = document.getElementById('pwd3').value.trim();
-var pwd = document.getElementById('pwd2').value.trim();
- if (user.length >= 6 && user.length <= 12 && user == pwd) {
-  $("#pwd3").parent().find(".imga").show();
-  $("#pwd3").parent().find(".imgb").hide();
- }else{
-   $("#pwd3").parent().find(".imgb").show();
-  $("#pwd3").parent().find(".imga").hide();
- };
-}
-</script>
-{% endblock %}
-
-{% block content %}
-<div id="pageAll">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+	<div id="pageAll">
 		<div class="pageTop">
 			<div class="page">
 				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
@@ -87,4 +46,38 @@ var pwd = document.getElementById('pwd2').value.trim();
 			<!-- 修改密码页面样式end -->
 		</div>
 	</div>
-{% endblock %}
+</body>
+<script type="text/javascript">
+function checkpwd1(){
+var user = document.getElementById('pwd1').value.trim();
+ if (user.length >= 6 && user.length <= 12) {
+  $("#pwd1").parent().find(".imga").show();
+  $("#pwd1").parent().find(".imgb").hide();
+ }else{
+  $("#pwd1").parent().find(".imgb").show();
+  $("#pwd1").parent().find(".imga").hide();
+ };
+}
+function checkpwd2(){
+var user = document.getElementById('pwd2').value.trim();
+ if (user.length >= 6 && user.length <= 12) {
+  $("#pwd2").parent().find(".imga").show();
+  $("#pwd2").parent().find(".imgb").hide();
+ }else{
+  $("#pwd2").parent().find(".imgb").show();
+  $("#pwd2").parent().find(".imga").hide();
+ };
+}
+function checkpwd3(){
+var user = document.getElementById('pwd3').value.trim();
+var pwd = document.getElementById('pwd2').value.trim();
+ if (user.length >= 6 && user.length <= 12 && user == pwd) {
+  $("#pwd3").parent().find(".imga").show();
+  $("#pwd3").parent().find(".imgb").hide();
+ }else{
+   $("#pwd3").parent().find(".imgb").show();
+  $("#pwd3").parent().find(".imga").hide();
+ };
+}
+</script>
+</html>

@@ -13,7 +13,4 @@ urlpatterns = [
     url(r'^register/', views.register, name='register'),
     url(r'^login/', views.login, name='login'),
     url(r'^logout/', views.logout, name='logout'),
-
-    # 权限/角色
-    url(r'^userper/', views.userper, name='userper'),
 ]

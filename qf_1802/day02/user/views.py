@@ -122,14 +122,3 @@ def logout(request):
         response.delete_cookie('ticket')
         return response
 
-
-def userper(request):
-    # 查询妲己有那些权限
-    # 1. 先查询妲己这个用户
-    # 2. 在查询角色
-    # 3. 通过角色id去查询权限
-    user = Users.objects.filter(username='妲己').first()
-    u_r_p = user.role.r_p.all()
-    # 判断妲己是否有学生列表的权限
-    u_r_p.filter(p_en='STUDENTLIS').exists()
-    pass

@@ -14,7 +14,4 @@ urlpatterns = [
     url(r'^delstu/', views.delstu, name='delstu'),
     url(r'^editgrade/', views.editgrade, name='editgrade'),
 
-    # F/Q
-    url(r'^selectstu/', views.selectstu)
-
 ]

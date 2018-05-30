@@ -1,7 +1,5 @@
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
-from django.db.models import F, Q
-from django.http import HttpResponse
 from django.shortcuts import render, HttpResponseRedirect
 
 from django.core.urlresolvers import reverse
@@ -9,7 +7,6 @@ from django.core.urlresolvers import reverse
 from app.models import Grade, Student
 from day010.settings import PAGE_NUMBERS
 from user.models import Users
-from utils.functions import is_login
 
 '''
 首页
@@ -129,22 +126,3 @@ def editgrade(request):
 
         return HttpResponseRedirect(reverse('app:grade'))
 
-
-def selectstu(request):
-
-    # 查询python班下语文成绩超过数学成绩10分的学生
-    # grade = Grade.objects.filter(g_name='python').first()
-    # students = grade.student_set.all()
-    #
-    # stu = students.filter(s_yuwen__gt= F('s_shuxue') + 10)
-
-    # 查询python班语文大于等于80或者数学小于等于80的学生
-    grade = Grade.objects.filter(g_name='python').first()
-    students = grade.student_set.all()
-
-    stu = students.filter(Q(s_yuwen__gte=80) | Q(s_shuxue__lte=80))
-
-    # 查询python班语文小于80并且数学小于等于80的学生
-    stu = students.filter(~Q(s_yuwen__gte=80) & Q(s_shuxue__lte=80))
-
-    return HttpResponse('123')

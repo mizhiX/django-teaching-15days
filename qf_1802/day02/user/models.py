@@ -11,22 +11,3 @@ class Users(models.Model):
 
     class Meta:
         db_table = 'user'
-
-
-class Permission(models.Model):
-
-    p_name = models.CharField(max_length=10)
-    p_en = models.CharField(max_length=10)
-
-    class Meta:
-        db_table = 'permission'
-
-
-class Role(models.Model):
-
-    r_name = models.CharField(max_length=10)
-    u = models.OneToOneField(Users)
-    r_p = models.ManyToManyField(Permission)
-
-    class Meta:
-        db_table = 'role'
