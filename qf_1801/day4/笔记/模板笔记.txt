@@ -1,0 +1,67 @@
+
+过滤器
+
+1. date
+年： y  两位年  Y 四位年
+月： m
+日： d
+
+时：h 12小时制  H 24小时制
+分：m
+秒：s
+
+2. 注释
+{#  #}
+
+{% comment %}  {% endcomment %}
+
+3.大小写
+upper  lower
+
+4. 
+widthratio 数 分母  分子
+
+5.
+divisibleby:2  整除2，返回True，反之False
+
+6.
+{% url 'namespace:name' value1 %}
+工程url中定义namespace
+模块appurl中定义name
+
+
+7. 请求
+post 提交数据隐藏了
+get  提交数据在url上，？xx=xxxx
+put  更新全部数据
+patch  更新局部数据
+delete 删除
+
+get : /s/getstu/s_id/
+
+post： /s/getstu/s_id/
+删除： Student.objects.filter(s_id=s_id).delete()
+
+delete： /s/getstu/s_id/
+
+code: 200
+
+8. form
+<input type='text'>
+<input type='date'>
+<input type='files'>
+
+9. QueryDict与dict的区别
+
+10. path
+
+11. pk==id
+
+
+作业：
+1. 添加学生信息页面，提交跳转到添加学生拓展详情页面
+2. 详情页面保存信息
+
+设计到学生表和学生拓展表，一对一
+
+

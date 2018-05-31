@@ -1,0 +1,15 @@
+
+{% extends 'base.html' %}
+{% block title %}
+    学生列表
+{% endblock %}
+
+{% block contains %}
+    {% for stu in stus %}
+        学生id：{{ stu.id }}
+        学生名字：{{ stu.s_name }}
+        <a href="/s/delstu/?stu_id={{ stu.id }}">删除{{ stu.s_name }}</a>|
+        <a href="/s/upstu/?stu_id={{ stu.id }}">修改{{ stu.s_name }}</a>
+        <br>
+    {% endfor %}
+{% endblock %}

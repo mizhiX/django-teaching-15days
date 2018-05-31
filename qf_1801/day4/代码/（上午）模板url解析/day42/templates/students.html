@@ -1,0 +1,13 @@
+
+{% extends 'base.html' %}
+{% block title %}
+    学生列表
+{% endblock %}
+
+{% block contains %}
+    {% for stu in stus %}
+        学生id：{{ stu.id }}
+        学生名字：{{ stu.s_name }}
+        <br>
+    {% endfor %}
+{% endblock %}

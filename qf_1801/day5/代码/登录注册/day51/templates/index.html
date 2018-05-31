@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>所有学生信息页面</title>
+</head>
+<body>
+
+{% for stuinfo in stuinfos %}
+    姓名：{{ stuinfo.s.s_name }}
+    电话：{{ stuinfo.s.s_tel }}
+    地址：{{ stuinfo.i_addr }}
+    <br>
+{% endfor %}
+
+<h4>------------------我是分割线-------------</h4>
+<a href="{% url 's:add' %}">添加学生</a>
+
+</body>
+</html>

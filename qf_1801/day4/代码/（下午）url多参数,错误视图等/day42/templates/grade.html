@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+{% block title %}
+    班级列表
+{% endblock %}
+
+{% block contains %}
+    {% for g in gs %}
+        班级id：{{ g.id }}
+        {# <a href="/s/allstudent/{{ g.id }}/"> #}
+        <a href=" {% url 's:alls' g.id %}">
+
+            班级名称：{{ g.g_name }}
+        </a>
+        <br>
+    {% endfor %}
+{% endblock %}
