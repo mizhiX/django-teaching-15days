@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生列表</title>
+</head>
+<body>
+{% for stu in stus %}
+    学生id：{{ stu.id }}
+    学生姓名：{{ stu.s_name }}
+    学生年龄：{{ stu.s_age }}
+    班级id： {{ stu.g_id }}
+<br>
+{% endfor %}
+</body>
+</html>

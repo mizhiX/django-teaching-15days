@@ -1,0 +1,40 @@
+1. 
+修改字段名
+alter table table_name change 原名称 修改后名称 类型
+
+2、objects对象
+通过模型.objects来实现数据的CRUD操作
+
+3. 获取所有学生
+select * from student;
+模型.objects.all()
+
+4.获取所有女生的信息
+filter(过滤条件)
+get(过滤条件)
+
+区别：
+get：返回一个满足条件的对象，没有满足条件的则直接报DoesNotExit的异常，
+如果查询结果有多个数据的话，就报MulitiObjectsReturned
+
+filter（）：返回满足条件的结果 
+
+first（）：返回第一条数据
+
+last（）：返回最后一条数据
+
+count（）：求和
+
+gt gte：大于  大于等于
+lt lte： 小于  小于等于
+
+5. F() / Q()
+
+from django.db.models import F，Q
+
+
+6. 
+班级表  学生表
+
+1）url-->班级页面，展示班级信息，
+2) 所有学生信息页面

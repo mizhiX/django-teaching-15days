@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>班级列表</title>
+</head>
+<body>
+{% for g in grages %}
+    班级id：{{ g.id }}
+    <a href="/s/allstu/?g_id={{ g.id }}">
+            班级名称：{{ g.g_name }}
+    </a>
+    <br>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询所有学生信息</title>
+</head>
+<body>
+
+    {% for stu in stus %}
+        id: {{ stu.id }}
+        姓名：{{ stu.stu_name }}
+        生日：{{ stu.stu_birth }}
+        电话：{{ stu.stu_tel }}
+    <br>
+    {% endfor %}
+
+
+</body>
+</html>

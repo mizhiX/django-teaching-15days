@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% for stu in stus %}
+    计数从0开始：{{ forloop.counter0 }} &nbsp;&nbsp;
+    计数从1开始：{{ forloop.counter }} &nbsp;&nbsp;
+    计数从最后开始，到1停：{{ forloop.revcounter }} &nbsp;&nbsp;
+    计数从最后开始，到0停：{{ forloop.revcounter0 }} &nbsp;&nbsp;
+
+    {% ifequal forloop.counter 3 %}
+        <h1>姓名：{{ stu.stu_name }}</h1>
+    {% else %}
+        姓名：{{ stu.stu_name }}
+    {% endifequal %}
+
+    性别：
+    {% if stu.stu_sex %}
+        男
+    {% else %}
+        女
+    {% endif %}
+    &nbsp;&nbsp;&nbsp;
+    生日：{{ stu.stu_birth }}
+    创建时间： {{ stu.stu_create_time }}&nbsp;&nbsp;
+
+    {% if stu.stu_yuwen > 80 %}
+        <h3>语文成绩+10：{{ stu.stu_yuwen | add:10 }}&nbsp;&nbsp;</h3>
+    {% else %}
+        语文成绩：{{ stu.stu_yuwen }}
+    {% endif %}
+
+    语文成绩：{{ stu.stu_yuwen | add:-10 }}&nbsp;&nbsp;
+    数学成绩：{{ stu.stu_shuxue }}&nbsp;&nbsp;
+    <br>
+{% empty %}
+    没有学生信息
+{% endfor %}
+</body>
+</html>

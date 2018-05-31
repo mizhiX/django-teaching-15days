@@ -1,0 +1,87 @@
+1.
+virtualenv
+startproject
+startapp
+
+settings---> installed_apps 加入app_name
+			 修改databases
+			 修改templates，os.path.join(BASE_DIR, 'templates')
+			 修改时区 TIME_ZONE = 'Asia/Shanghai'
+			 __init__.py加载pymysql
+2. 关联
+1:1 OneToOneField  主键和外键是一对一的关系，在关联表中，只能关联一个主表的id
+
+拓展表找主表： 拓展信息对象.关联字段
+主表找拓展表的信息： 主表对象.关联表的model_name
+
+1:N
+M:N
+
+3. on_delete
+默认cascade，主表删除，从表也删除
+set_null, 主表删除，从表关联字段设为空
+protect， 不让删除
+set_default, 主表删除，从表关联字段设置为默认值
+
+4. 
+静态资源加载
+1） static/images/xxx.png
+2） 
+{% load static %}
+
+{% static 'images/xx.png' %}
+
+5. for
+
+{% for i in stu %}
+{% empty %}
+{% endfor %}
+
+6. if
+{% if xxx %}
+{% endif %}
+
+7. ifequal
+{% ifequal xxx 1 %}
+{% else %}
+{% endifequal %}
+
+8. forloop
+forloop.counter
+计数从0开始：{{ forloop.counter0 }} 
+计数从1开始：{{ forloop.counter }}
+计数从最后开始，到1停：{{ forloop.revcounter }} 
+计数从最后开始，到0停：{{ forloop.revcounter0 }} 
+
+9. 过滤器 （|）
+在变量显示前修改
+
+
+add 加法，增加值
+
+
+10. 
+权限设计
+
+用户表user
+u_name, u_sex, u_birth, u_operate_time, u_create_time
+
+角色表role
+r_name， 管理员，会员，超级VIP
+
+角色role和权限permission
+r_id
+p_id
+
+权限表 permission
+p_name
+具体权限名有，登录权限，查询用户列表信息权限，修改用户信息权限
+
+1) 查询某某用户具备那些权限
+2）判断某一个用户是否有某一个权限
+
+
+
+
+
+
