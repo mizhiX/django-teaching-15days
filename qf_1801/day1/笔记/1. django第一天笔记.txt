@@ -1,0 +1,45 @@
+
+1. MVC
+2. MVT
+3. B/S 
+4. C/S
+
+5. 安装虚拟环境
+pip3 install virtualenv
+
+6. 安装env环境
+virtualenv --no-site-packages -p xxxx env
+
+virtualenv --no-site-packages env
+
+7. 进入虚拟环境
+source bin/activate
+
+8. 退出虚拟环境
+deactivate
+
+8. 安装django
+pip install django==1.11
+
+9. 创建项目
+django-admin startproject helloworld
+
+10. 启动django项目
+python manage.py runserver ip:端口
+
+11. 创建app
+python manage.py startapp appname
+
+12. app
+__init__.py:初始化
+admin.py: 管理后台注册模型
+apps.py: settings.py里面注册app的时候需要使用到。一般不推荐这样使用
+from app.apps import AppConfig
+AppConfig.name
+models.py: 写模型的地方
+views.py: 写处理业务逻辑的地方
+
+13. 迁移数据库
+python manage.py makemigrations
+python manage.py migrate
+
