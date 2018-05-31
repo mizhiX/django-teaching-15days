@@ -1,0 +1,74 @@
+
+1. 修改返回结构
+{"code":0, 
+"data":
+	{
+		"count":51,
+		"next":"http://xytys.klicen.com/api/appointment/order/?list_order_type=completed&page=2&page_size=10",
+
+		"previous":null,"
+		 results":
+			[{"id":655}]
+	}	
+"msg":"请求成功"		
+}
+
+2. 搜索 
+
+http://xytys.klicen.com/api/appointment/order/?page=1&page_size=10&list_order_type=completed&search=12345678905
+
+search = request.GET.get('search')
+
+model.objetcs.filter(name__contains==search)
+
+
+3. 卸载djangorestframework
+
+pip uninstall djangorestframework
+
+pip install djangorestframework==3.4.6
+
+4. 
+127.0.0.1/stu/student/?name=三
+
+s_name = request.GET.get('name')
+
+model.objetcs.filter(name__contains==s_name)
+
+5. 过滤安装包安装
+
+pip install django-filters
+
+6. 创建字段
+
+alter table day51_student add s_yunwen DECIMAL(3,1) DEFAULT NULL;
+ALTER TABLE day51_student add s_operate_time TIMESTAMP;
+
+ALTER TABLE day51_student add s_status VARCHAR(10) DEFAULT 'NONE';
+
+alter table day51_student add s_delete int(1) DEFAULT 1;
+
+
+7. 练习题
+
+两个方式： 后端渲染 , 前后分离 api接口
+1） 过滤语文成绩不及格的学生
+2） 过滤语文成绩在80到90分之间的学生
+
+3） 过滤留学的学生
+
+4） 过滤修改时间在2018年3月1号
+	到5月1号的学生
+
+5) 过滤语文成绩在80到90分之间的学生
+   过滤修改时间在2018年3月1号到5月1号的学生
+
+8. rest接口filter参数
+
+http://127.0.0.1:8081/stu/student/?yuwen_max=60
+http://127.0.0.1:8081/stu/student/?yuwen_max=90&yuwen_min=80
+http://127.0.0.1:8081/stu/student/?status=DROP_SCH
+http://127.0.0.1:8081/stu/student/?operate_time_min=2018-03-01&operate_time_max=2018-05-01
+
+
+STATUS = [('NONE', '正常'),('NEXT_SCH', '留级'),('DROP_SCH', '退学'),('LEAVE_SCH', '休学')]

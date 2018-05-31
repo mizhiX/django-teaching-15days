@@ -1,0 +1,8 @@
+20 E:\wordspace\day51\stu\views.py index views 1525331019.636807 获取学生信息成功
+20 index 2018-05-03 15:26:49,505 url: /stu/index/ method:GET 获取学生信息成功
+20 index 2018-05-03 15:35:39,562 url: /stu/index/ method:GET 获取学生信息成功
+INFO index 2018-05-03 15:37:58,556 url: /stu/index/ method:GET 获取学生信息成功
+INFO index 2018-05-03 15:39:33,297 url: /stu/index/ method:GET 获取学生信息成功
+INFO index 2018-05-03 15:39:57,140 url: /stu/index/ method:GET 获取学生信息成功
+INFO index 2018-05-03 16:48:21,371 url: /stu/index/ method:GET 获取学生信息成功
+INFO index 2018-05-03 17:03:58,025 url: /stu/index/ method:GET 获取学生信息成功

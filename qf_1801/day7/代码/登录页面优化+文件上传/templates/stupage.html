@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生分页信息</title>
+</head>
+<body>
+{% for s in page %}
+    姓名：{{ s.s_name }}
+    电话：{{ s.s_tel }}
+{% endfor %}
+
+<br>
+一共{{ page.paginator.num_pages }}页
+
+{% for i in page.paginator.page_range %}
+    {{ i }}
+{% endfor %}
+
+{% if page.has_next %}
+    <a href="/stu/aStuPage/?page_num={{ page.next_page_number }}">下一页</a>
+{% endif %}
+
+当前第{{ page.number }}页
+
+{% if page.has_previous %}
+    <a href="/stu/aStuPage/?page_num={{ page.previous_page_number }}">上一页</a>
+{% endif %}
+
+</body>
+</html>

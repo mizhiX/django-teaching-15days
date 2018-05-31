@@ -1,0 +1,49 @@
+1.
+ajax
+
+delete--> url  /stu/student/ID/ 
+
+2. form表单提交
+a) csrfmiddle开启 
+b) {% csrf_token %}
+
+<input type='hidden' name='csrfmiddlewaretoken' value='duRoaLbyewAO7aLxV0HZyOWB9npPqLs01a27Y3nnqg2h8lTJjkcQdeiKzfpZJdX0' />
+
+3. ajax提交delete
+
+a) 开启了csrfmiddle
+b) csrf = $('input[name="csrfmiddlewaretoken"]').val()
+
+   headers:{'X-CSRFToken': csrf}
+
+4. ajax更新patch
+
+5. ajax创建post
+
+6. 返回结构
+
+[{"id":11,"s_name":"测试1","s_tel":"12121212","s_addr":""},{"id":12,"s_name":"顺悟空","s_tel":"17897654331","s_addr":""},{"id":15,"s_name":"张三丰","s_tel":"134456778","s_addr":""}]
+
+修改为以下格式
+
+{
+	"code":0,
+	"data":{"display_fields":[{"field_key":"vehicle_type","id":72,"field_name":"车型"}]},
+
+	"msg":"请求成功"
+}
+
+需要继承JSONRenderer，重构render方法
+
+7. patch 变量为空
+
+{
+    "code": 0,
+    "msg": "请求成功",
+    "data": {
+        "s_name": [
+            "This field may not be blank."
+        ]
+    }
+}
+

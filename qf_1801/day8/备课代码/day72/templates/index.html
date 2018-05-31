@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我来获取所有信息</title>
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+
+    <script type="text/javascript" >
+    $(function(){
+        $('#getStu').click(function(){
+            $.get('/stu/addStu/', function(msg){
+                s = '<table><tr><td>姓名</td><td>电话</td></tr>';
+                for(var i=0; i<msg.length; i++){
+                    s += '<tr><td>' + msg[i].s_name + '</td><td>' + msg[i].s_tel + '</td></tr>'
+                }
+                s += '</table>'
+                $('#div_stu').html(s);
+            }, 'json');
+        });
+    });
+
+
+    </script>
+</head>
+<body>
+<input type="button" value="获取学生信息" id="getStu">
+<div id="div_stu">
+
+
+</div>
+</body>
+</html>

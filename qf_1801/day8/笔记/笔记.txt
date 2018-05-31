@@ -1,0 +1,64 @@
+
+1. 错误提示：
+
+Users objects not attr is_authenticated
+
+2.
+登录注册
+
+cookie/session
+
+实现登录注册
+
+加密解密
+
+中间件
+
+redirect()
+
+url if for
+
+上传文件
+
+3.
+前后分离
+
+前端：vue
+
+后端：restframeork
+
+4. 日志logging
+
+四个组成： 
+
+loggers  用来处理传入的信息
+handlers  用来处理信息的
+filters 过滤loggers传递给handlers的信息，加一些处理控制
+formatters 格式化，讲我们需要保存到日志文件中的信息进行统一格式化
+
+错误等级：
+
+CRITICAL>ERROR>WARNING>INFO>DEBUG
+
+critical:  重大的bug
+error： 系统里面有错误
+warning： 警告
+info： 正常
+debug： 调试信息
+
+
+5. 
+什么是restful风格
+
+什么是rest：REST是所有Web应用都应该遵守的架构设计指导原则
+
+			面向资源
+
+			同一个资源的一组不同的操作
+
+6. 安装
+pip install djangorestframework
+
+pip install django-filter
+
+

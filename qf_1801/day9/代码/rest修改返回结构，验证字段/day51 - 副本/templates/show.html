@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>展示所有学生的信息</title>
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('#showStus').click(function(){
+                $.get('/stu/student/', function(msg){
+                    console.log(msg)
+                    s = '<table><tr><td>ID</td><td>姓名</td><td>地址</td><td>操作</td></tr>'
+                    for(var i=0; i<msg.length; i++){
+                        s += '<tr><td>' + msg[i].id + '</td>\
+                        <td>' + msg[i].s_name + '</td>\
+                        <td>' + msg[i].s_tel + '</td><td>\
+                        <a href="javascript:;" onclick="update_stu(' + msg[i].id + ')">编辑</a>|\
+                        <a href="javascript:;" onclick="del_stu(' + msg[i].id + ')">删除</a></td></tr>'
+                    }
+                    s += '</table>'
+                    $('#div_stus').html(s)
+                }, 'json');
+            });
+        });
+
+        function del_stu(i){
+            csrf = $('input[name="csrfmiddlewaretoken"]').val()
+            $.ajax({
+                url:'/stu/student/' + i,
+                type:'DELETE',
+                headers:{'X-CSRFToken': csrf},
+                dataType:'json',
+                success: function(msg){
+                    alert('删除成功');
+                },
+                error: function(msg){
+                    console.log(msg)
+                },
+            });
+        };
+
+        function update_stu(i){
+            s = '姓名：<input type="text" id="s_name" name="name">\
+            电话：<input type="text" id="s_tel" name="tel">\
+            <input type="button" value="提交" onclick="update(' + i + ')">'
+            $('#div_update_stus').html(s);
+        }
+
+        function update(i){
+            csrf = $('input[name="csrfmiddlewaretoken"]').val()
+            s_name = $('#s_name').val()
+            s_tel = $('#s_tel').val()
+            $.ajax({
+                url:'/stu/student/' + i + '/',
+                type:'PATCH',
+                data:{'s_name': s_name, 's_tel': s_tel},
+                dataType:'json',
+                headers:{'X-CSRFToken': csrf},
+                success: function(msg){
+                    alert('修改成功')
+                },
+                error: function(msg){
+                    alert('修改失败')
+                }
+            });
+        };
+
+        function add_stus(){
+            s = '姓名:<input type="text" name="name" id="s_name">\
+            电话<input type="text" name="tel" id="s_tel">\
+            <input type="button" onclick="add()" value="提交">'
+
+            $('#div_add_stus').html(s)
+        }
+
+        function add(){
+            s_name = $('#s_name').val()
+            s_tel = $('#s_tel').val()
+            csrf = $('input[name="csrfmiddlewaretoken"]').val()
+
+            $.ajax({
+                url:'/stu/student/',
+                type:'POST',
+                dataType:'json',
+                headers:{'X-CSRFToken': csrf},
+                data:{'s_name': s_name, 's_tel': s_tel},
+                success: function(msg){
+                    console.log(msg)
+                },
+                error: function(msg){
+                    console.log(msg)
+                }
+            });
+        }
+    </script>
+
+</head>
+<body>
+{% csrf_token %}
+<input id="showStus" value="获取所有学生的信息" type="button">
+<input id="addStus" value="添加学生的信息" type="button" onclick="add_stus()">
+<div id="div_stus"></div>
+<div id="div_update_stus"></div>
+<div id="div_add_stus"></div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+第一天开发项目：
+
+a）功能点:
+	1）登录注册
+		中间件（首页，商品展示页面等等）
+
+	2）头像
+		图片上传
+
+	3）页面解析
+		{{  }}
+		{% url 'namespace:name' %}
+
+	4) 跳转/url
+		?P<id>
+
+	5）购物车商品的增删
+		rest 
+
+	6）订单的生成
+		购物车----订单关联
+
+	7）待收货/代付款
+
+
+b）虚拟环境搭建
+		a1）pychram的解释器interpreter的配置
+		a2）debug的配置
+		virtualenv --no-site-packages -p xxxx env
+
