@@ -1,0 +1,79 @@
+
+1. flask概念
+用于开发web的微框架，很多拓展包
+pip install flask
+
+2. 虚拟环境
+virtualenv --no-site-packages falskenv
+
+3. 最小项目
+
+文件名:hello.py
+
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+	return 'hello world'
+
+
+if __name__ == '__main__':
+	app.run()
+
+4. 启动项目
+python hello.py
+
+5. 修改启动方式
+app.run(debug=True, port=8080, host='0.0.0.0')
+
+6. 修改启动方式
+pip install flask_script
+
+from flask_script import Manager
+
+manege = Manager(app=app)
+
+启动项目：
+	manege.run()
+
+启动命令: python hello.py runserver -h 0.0.0.0 -p 8080 -d
+
+
+7. 路由规则
+
+string： 默认
+int
+float
+uuid
+path 
+
+8. blueprint
+
+127.0.0.1:8080/user/login/
+127.0.0.1:8080/user/register/
+
+
+127.0.0.1:8080/axf/home/
+127.0.0.1:8080/axf/mine/
+
+python manage.py runserver -p 8083 -d
+
+9. 指定static目录，和templates目录地址的
+
+Flask(__name__, 
+	static_folder='static',
+	templates_fodler='templates'
+	)
+
+10. request
+
+post请求：request.form
+方法：get  getlist
+
+get请求： request.args
+
+11. url_for
+
+url_for('蓝图第一个参数.函数名')
