@@ -1,0 +1,59 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+    分数
+{% endblock %}
+
+{% block extCSS %}
+    {# <link rel="stylesheet" href="/static/css/index.css"> #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+    {{ scores }}
+    <br>
+    <ul>
+        {% for score in scores %}
+            {% if loop.first %}
+                <li style="color:red;">{{ loop.index }}:{{ loop.revindex }}:{{ score }}</li>
+            {% elif loop.last %}
+                <li style="color:yellow;">{{ loop.index }}:{{ loop.revindex }}:{{ score }}</li>
+            {% else %}
+                <li>{{ loop.index }}:{{ loop.revindex }}:{{ score }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <br>
+    后端传递的参数:{{ content_h2 }}
+    <br>
+    讲后端传递的参数的样式去掉:{{ content_h2|striptags }}
+    <br>
+    讲样式渲染出来后的样式：{{ content_h2|safe }}
+
+    {{ content_h3 }}
+    <br>
+    {{ content_h3|length }}
+    <br>
+    {{ content_h3|trim }}
+    <br>
+    {{ content_h3|trim|length }}
+    <br>
+
+    {% from 'common.html' import show_goods %}
+
+    {{ show_goods('1', '可爱多') }}
+    <br>
+    {{ show_goods('2', '梦龙') }}
+    <br>
+    {{ show_goods('3', '大舌头') }}
+
+    <br>
+
+    {% from 'common.html' import say %}
+
+    {{ say() }}
+
+{% endblock %}
+
