@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+    学生页面
+{% endblock %}
+
+
+{% block content %}
+
+    <table>
+        <tr>
+            <th>id</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>操作</th>
+        </tr>
+        {% for stu in stus %}
+            <tr>
+                <td>{{ stu.s_id }}</td>
+                <td>{{ stu.s_name }}</td>
+                <td>{{ stu.s_age }}</td>
+                <td>
+                    <a href="/user/update_stu/?id={{ stu.s_id }}">编辑</a>
+                    |
+                    <a href="">删除</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}
