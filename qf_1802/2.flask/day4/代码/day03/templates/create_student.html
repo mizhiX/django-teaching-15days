@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="" method="post">
+    <input type="hidden" value="{{ g_id }}" name="g_id">
+    姓名：<input type="text" name="username">
+    <input type="submit" value="提交学生信息">
+</form>
+
+{% endblock %}
