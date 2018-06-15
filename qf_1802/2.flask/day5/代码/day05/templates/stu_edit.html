@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="" method="post">
+    <input type="hidden" value="{{ stu.s_id }}" name="s_id">
+    姓名:<input type="text" value="{{ stu.s_name }}" name="username">
+    年龄：<input type="text" value="{{ stu.s_age }}" name="age">
+    <input type="submit" value="提交">
+</form>
+
+{% endblock %}
